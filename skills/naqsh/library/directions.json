@@ -245,6 +245,51 @@
         "dark": { "ground": "#12161c", "surface": "#1a2029", "ink": "#ece7dc", "quiet": "#a5adb8", "rule": "#262e3a", "accent": "#7fb0ff", "accentInk": "#12161c" } },
       "system": { "shell": "sidebar like a binder index", "density": "comfortable 40px rows",
         "kpi": "serif numerals with ruled boxes", "table": "form-like ruled table, tabular numerals", "status": "stamp-like text label", "chart": "navy bars" }
+    },
+    {
+      "id": "stone-ledger", "surface": "app", "family": "app-achromatic", "boldness": 3, "temperature": "neutral", "typeStyle": "grotesk",
+      "tags": ["achromatic", "black and white", "single accent", "modern sans", "information-rich"],
+      "idea": "the ERP is ink on a warehouse floor: no colour except where the data needs it",
+      "type": { "display": "Geist 700 (answer figures only)", "text": "Geist", "mono": "Geist Mono (IDs, SKUs only)",
+        "google": ["Geist:wght@400;500;700", "Geist+Mono:wght@400;500"] },
+      "palette": {
+        "light": { "ground": "#f3f2ef", "surface": "#ffffff", "ink": "#111111", "quiet": "#5e5d5a", "rule": "#e3e2de", "accent": "#151515", "accentInk": "#ffffff", "data": "#1f5fc4", "warn": "#b45309", "bad": "#c0262d" },
+        "dark": { "ground": "#0c0c0c", "surface": "#161616", "ink": "#f2f2f2", "quiet": "#a3a3a3", "rule": "#262626", "accent": "#f2f2f2", "accentInk": "#0c0c0c", "data": "#6098ea", "warn": "#f0b45a", "bad": "#f06a72" } },
+      "system": { "shell": "open plane: sidebar on the ground colour (no fill) holding mark, search, nav, language, theme and user; active item a grey pill; mobile 48px bar + full-screen sheet",
+        "density": "comfortable 40px rows", "kpi": "one strip split by hairlines; the answer figure 1.3x its siblings",
+        "table": "white card, sentence-case grey headers, right-aligned numbers and dates, pale initials for people",
+        "status": "pale pill pairs, one hue per state", "chart": "grey columns, current period in the data hue",
+        "primary": "one near-black button per screen, top right of the title row" }
+    },
+    {
+      "id": "bazaar-ledger", "surface": "app", "family": "app-ledger-colour", "boldness": 4, "temperature": "warm", "typeStyle": "grotesk",
+      "tags": ["single accent", "modern sans", "information-rich", "uzbek colour", "pomegranate"],
+      "idea": "a clean ink-and-sand ledger where only the data wears bazaar colours",
+      "type": { "display": "Onest 700 (answer figures, page titles)", "text": "Onest", "mono": "JetBrains Mono (IDs, SKUs only)",
+        "google": ["Onest:wght@400;500;700", "JetBrains+Mono:wght@400;500"] },
+      "palette": {
+        "light": { "ground": "#f5f1ea", "surface": "#ffffff", "ink": "#16141f", "quiet": "#5c5866", "rule": "#e6dfd3", "accent": "#16141f", "accentInk": "#ffffff", "data": "#b3263a", "warn": "#a5650a", "bad": "#b3263a", "info": "#3b3486" },
+        "dark": { "ground": "#121019", "surface": "#1b1824", "ink": "#f4efe6", "quiet": "#aaa4b6", "rule": "#2a2635", "accent": "#f4efe6", "accentInk": "#121019", "data": "#ff6b7d", "warn": "#e9b04a", "bad": "#ff6b7d", "info": "#9d95f0" } },
+      "system": { "shell": "light sand sidebar with a thin pomegranate-saffron-indigo seam at the top; holds search, nav, language, theme and user",
+        "density": "comfortable 40px rows", "kpi": "one strip; the answer figure larger; deltas in data colours",
+        "table": "white card, tabular numerals, pomegranate selection edge",
+        "status": "pale pills: saffron = waiting, indigo = in progress, olive = done, struck grey = cancelled",
+        "chart": "sand columns, current period pomegranate", "primary": "one ink button per screen, top right of the title row" }
+    },
+    {
+      "id": "signal-desk", "surface": "app", "family": "app-signal", "boldness": 4, "temperature": "warm", "typeStyle": "grotesk",
+      "tags": ["black and white", "single accent", "modern sans", "graphite+orange", "information-rich"],
+      "idea": "a graphite desk where signal orange marks the one thing that needs action",
+      "type": { "display": "Manrope 800 (answer figures, page titles)", "text": "Manrope", "mono": "JetBrains Mono (IDs, SKUs only)",
+        "google": ["Manrope:wght@400;500;600;800", "JetBrains+Mono:wght@400;500"] },
+      "palette": {
+        "light": { "ground": "#f4f4f2", "surface": "#ffffff", "ink": "#141517", "quiet": "#5b5d61", "rule": "#e2e2df", "accent": "#141517", "accentInk": "#ffffff", "data": "#d4500f", "warn": "#d4500f", "bad": "#c0262d" },
+        "dark": { "ground": "#101113", "surface": "#18191c", "ink": "#f1f1ef", "quiet": "#a2a4a8", "rule": "#27292d", "accent": "#f1f1ef", "accentInk": "#101113", "data": "#ff7a33", "warn": "#ff7a33", "bad": "#f06a72" } },
+      "system": { "shell": "graphite sidebar (#1b1c1f light and dark) with white text; search, nav, language, theme and user inside it",
+        "density": "compact 36px rows", "kpi": "one strip; the item that needs action gets an orange edge",
+        "table": "white card, tabular numerals, orange marker on rows needing action",
+        "status": "pale pills; orange reserved for 'needs action'", "chart": "graphite columns, current period orange",
+        "primary": "one orange-edged ink button per screen, top right of the title row" }
     }
   ]
 }

@@ -17,7 +17,8 @@ You **edit nothing**; the parent applies your fixes.
 - `DESIGN.md` with the dealt direction id and decisions. Print the sheet yourself:
   `node <skill>/scripts/deal.mjs --pick <id> --no-log`.
 - Screenshot folder from `inspect.mjs` (`<route>-<width>-<locale>-<theme>-{fold,full}.png`).
-- The latest `lint.mjs` and `inspect.mjs` output (or rerun them; the parent tells you the preview URL and flags).
+- The latest `lint.mjs` and `inspect.mjs` output. Rerun `inspect` only if screenshots are missing or stale; the
+  parent tells you the preview URL and flags.
 
 ## Review, in this order
 
@@ -29,9 +30,12 @@ You **edit nothing**; the parent applies your fixes.
    the deviation justified in `DESIGN.md`?
 4. **Floor.** Any FAIL in lint/inspect output; anything the scripts cannot see: text over busy images, focus
    order, layout jumps, overlapping elements, cropped text in ru, empty/error states (`app`).
-5. **Consistency** (`app`): page title row, primary action, toolbar, table, form and empty states look and behave
+5. **Answers** (`app`): does each screen state its finding (title subline), show shortfalls/deltas, status
+   breakdowns that link, counting filters and helpful form context, all derived from the existing data
+   (`references/app.md` → "Answer, don't display")? Missing answers are `idea` fixes.
+6. **Consistency** (`app`): page title row, primary action, toolbar, table, form and empty states look and behave
    the same on every screen.
-6. **Copy and material.** Invented proof, placeholder numbers not marked, the name/title repeated in one screen,
+7. **Copy and material.** Invented proof, placeholder numbers not marked, the name/title repeated in one screen,
    untranslated strings.
 
 ## Output

@@ -52,7 +52,9 @@ if (has('--validate')) {
   const pairs = [['ink', 'ground', 7], ['quiet', 'ground', 4.5], ['ink', 'surface', 4.5], ['quiet', 'surface', 4.5], ['accentInk', 'accent', 4.5]];
   for (const d of library) {
     for (const [mode, p] of Object.entries(d.palette)) {
-      for (const [fg, bg, need] of pairs) {
+      // Optional data hues (chart, warning, critical) must read as graphics on surface (3:1).
+      const extra = ['data', 'warn', 'bad'].filter((k) => p[k]).map((k) => [k, 'surface', 3]);
+      for (const [fg, bg, need] of [...pairs, ...extra]) {
         const r = ratio(p[fg], p[bg]);
         if (r < need) { bad++; console.log(`${d.id} ${mode}: ${fg} on ${bg} = ${r.toFixed(2)} (needs ${need})`); }
       }

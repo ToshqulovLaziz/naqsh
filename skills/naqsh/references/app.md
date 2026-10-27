@@ -3,21 +3,41 @@
 People work here for hours. Optimise for scanning, entering data and not making mistakes — and still make it
 look like **this company's** product, not a template.
 
+## Answer, don't display (most important)
+
+A work screen wins on what it tells the user, not on decoration. Before styling, write for each screen the question
+it answers ("how is this month going, and what needs action?") and derive from the **existing** mock/real data:
+
+- **Title subline = the finding**, not a greeting: "5 products below minimum · 6 orders awaiting payment".
+- **Shortfalls and deltas** next to raw numbers: stock vs minimum with "15 short", worst first; KPI deltas vs period.
+- **Breakdowns that navigate:** status counts (with %) that link to the filtered list (`/orders?status=new`).
+- **Filters that count:** status filter as count cards or chips whose numbers follow the search.
+- **Forms that help:** selecting a customer shows their city/phone; a line shows stock and warns (not blocks) when
+  quantity exceeds it; the total is the largest figure in a sticky summary.
+- **People and codes:** stable pale initials for managers/users; IDs and SKUs in mono.
+
+Only derive what the data supports; never invent numbers. New labels go through i18n in every locale.
+
 ## Character (from the dealt sheet)
 
-- Display face for page titles and KPI numerals, large and confident (28–40 px titles, 32–56 px KPI numbers).
-- The sheet's palette goes beyond the button: sidebar or header in a strong colour, a coloured KPI tile, the
-  current period in accent on charts, selection edges in accent.
-- One recognisable detail repeated everywhere (ledger rules, stamp-like status, colour-blocked tiles...).
-- Calm is not grey: neutral surfaces are warm or cool on purpose, never default Tailwind gray/slate.
+- Titles 22–32 px; the one **answer figure** per screen (revenue, order total) ~1.3× its siblings and the boldest
+  weight. Big type is for that figure, not for every heading.
+- Colour follows the sheet's budget: on achromatic sheets the chrome is ink and ground, and colour appears only on
+  data (current period, warnings, critical). On expressive sheets the sidebar or a tile may carry the colour.
+- One recognisable detail repeated everywhere (seam band, pale pills, hairline strips, a product mark).
+- A small product mark/wordmark built from the product name (inline SVG), not a letter in a box.
+- Neutral surfaces are tinted on purpose (stone, sand), never default Tailwind gray/slate.
+- Serif faces are for pages, not for app UI, unless the sheet says otherwise.
 
 ## System first
 
 Decide once, write in `DESIGN.md`, apply everywhere:
 
-- **Shell:** sidebar (many modules) or topbar (few). Mobile: drawer that closes on navigation.
+- **Shell:** sidebar (many modules) or topbar (few). Put search, language, theme and user in the sidebar so the
+  content area has no second bar. One primary action per screen, top right of the title row. Mobile: a 48 px bar
+  (menu, mark, screen name, one action) opening a full-screen sheet that closes on navigation and Esc.
 - **Density:** comfortable (40 px rows) or compact (32 px rows). One choice for the whole app.
-- **Type:** one UI family with tabular figures and Cyrillic (Inter, IBM Plex Sans, Golos Text, Manrope, Onest).
+- **Type:** one UI family with tabular figures and Cyrillic (Geist, Inter, IBM Plex Sans, Golos Text, Manrope, Onest).
   Mono only for codes/IDs if it helps scanning.
 - **Colour:** neutral ground; one brand accent for primary actions and selection; status colours reserved for status.
   Status = colour **and** text/icon, never colour alone.
@@ -43,7 +63,8 @@ Decide once, write in `DESIGN.md`, apply everywhere:
 
 ## Dashboards
 
-- 3–5 KPIs max, each with period and comparison; no decorative icons in gradient blobs.
+- 3–5 KPIs max in one strip, each with period and comparison; no decorative icons in gradient blobs.
+- Next to the chart, the list that needs action (low stock, overdue); below, recent items and a status breakdown.
 - Charts: one message per chart, labelled axes, theme-aware colours (charts must change in dark mode).
 - Tables and lists on a dashboard link to their full screen.
 

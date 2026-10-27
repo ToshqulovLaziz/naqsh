@@ -5,7 +5,7 @@ description: Design or redesign frontend UI so it looks deliberately designed, n
 
 # naqsh
 
-v0.4 (P3). `<skill>` below means this skill's base directory. Scripts need Node ≥ 22 and a local
+v0.5. `<skill>` below means this skill's base directory. Scripts need Node ≥ 22 and a local
 Chrome/Edge; nothing to install.
 
 ## 1. Route
@@ -67,8 +67,14 @@ in `<project>/.naqsh/taste.json`) and recent picks, and deals 3 directions from 
 - `page`: also read `references/page.md`. `app`: also read `references/app.md`; the sheet's `system` block decides
   shell, density, KPI, table, status and chart style.
 
+**Brief vs taste.** Adjectives in a brief ("calm", "minimal", "professional") describe the job, not the look. Meet
+them through clarity, density and restraint in motion, not by picking a direction the taste profile avoids. Never
+drop a direction only because it is bolder than the brief's adjective; if brief and taste truly conflict, pick for
+taste and note it in `DESIGN.md`.
+
 **Taste feedback.** When the user says what they like or dislike about a result, update `~/.naqsh/taste.json`
 (`boldness` 1–5, `temperature` warm|cool|neutral|any, `typeStyles`, `likes`, `avoid`, `notes`) and tell them.
+Preferences that hold for one surface only go in its `page` or `app` block, which overrides the general keys.
 
 ## 6. Floor (never waived; scripts check most of it)
 
@@ -90,8 +96,9 @@ tells — timidity is a failure too: if the result could pass for a template, pu
 ## 8. Build loop
 
 1. Tokens (scoped) → main screen / hero → the rest.
-2. After each step: `lint`. After the main screen and at the end: build, preview, `inspect`, **open the
-   screenshots and look**. Fix, repeat — at most 3 rounds after the first full pass.
+2. After each step: `lint`. After the main screen: build, preview, `inspect` on that route only (widest + narrowest
+   width, first locale, both themes). At the end: the full matrix. **Open the screenshots and look** each time.
+   Fix, repeat — at most 3 rounds after the first full pass. Read only the files you change; keep turns short.
 3. When the first full pass is at 0 floor FAIL, write `DESIGN.md` (draft) and spawn the reviewer in a fresh
    context — Agent tool, `subagent_type: "naqsh:naqsh-reviewer"` — with: project root, surface, mode, direction id,
    `<skill>` path, screenshot folder, preview URL and the inspect flags. Apply its `floor`, `idea` and `fidelity`
