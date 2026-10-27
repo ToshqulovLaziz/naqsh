@@ -36,6 +36,7 @@ const readJson = (p, dflt) => {
 };
 // Project profile overrides the user profile key by key.
 const taste = tastePaths.reduce((t, p) => ({ ...t, ...readJson(p, {}) }), DEFAULT_TASTE);
+const baseTaste = taste;
 const log = readJson(logPath, []);
 
 // ---------- contrast helpers (for --validate) ----------
@@ -72,6 +73,8 @@ const lc = (xs) => (xs ?? []).map((x) => String(x).toLowerCase());
 const overlap = (tags, words) => lc(tags).filter((t) => lc(words).some((w) => t.includes(w) || w.includes(t)));
 
 function score(d) {
+  // A surface block (taste.page / taste.app) overrides the general profile key by key.
+  const taste = { ...baseTaste, ...(baseTaste[d.surface] ?? {}) };
   const why = [];
   let s = -2 * Math.abs(d.boldness - (taste.boldness ?? 4));
   if (taste.temperature && taste.temperature !== 'any') {
@@ -164,6 +167,7 @@ while (dealt.length < n && pool.length) {
   pool = pool.filter((c) => c.d.family !== pick.d.family);
 }
 
-console.log(`Dealt ${dealt.length} ${surface} directions (seed ${seed}). Taste: boldness ${taste.boldness}, ${taste.temperature}${taste.typeStyles?.length ? `, ${taste.typeStyles.join('/')}` : ''}.\n`);
+const shown = { ...taste, ...(taste[surface] ?? {}) };
+console.log(`Dealt ${dealt.length} ${surface} directions (seed ${seed}). Taste: boldness ${shown.boldness}, ${shown.temperature}${shown.typeStyles?.length ? `, ${shown.typeStyles.join('/')}` : ''}.\n`);
 for (const { d, why } of dealt) console.log(`${sheet(d, false)}\nfits taste: ${why.join(', ') || '—'}\n`);
 console.log('Choose one (or reroll with a new --seed), then: node deal.mjs --pick <id>');
