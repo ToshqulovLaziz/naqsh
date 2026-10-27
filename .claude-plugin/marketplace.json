@@ -12,7 +12,7 @@
       "name": "naqsh",
       "source": "./",
       "description": "Design skill for web pages and ERP/admin screens: dealt directions, tiered rules, real-browser checks, uz/ru/en aware.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "Laziz Toshqulov",
         "url": "https://github.com/ToshqulovLaziz"

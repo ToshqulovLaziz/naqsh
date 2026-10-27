@@ -58,7 +58,12 @@ export function probe(opts) {
   out.tiny = []; out.small = [];
   if (vw <= 480) {
     const controls = all.filter((el) => el.matches('a[href],button,input:not([type=hidden]),select,textarea,summary,[role=button],[role=tab],[role=switch]') && visible(el));
-    const rects = controls.map((el) => el.getBoundingClientRect());
+    // A checkbox/radio's hit area is its label when it sits inside one or is linked by for=.
+    const hitArea = (el) => {
+      const label = el.matches('input') ? (el.closest('label') || (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`))) : null;
+      return (label || el).getBoundingClientRect();
+    };
+    const rects = controls.map(hitArea);
     // WCAG 2.5.8 spacing exception: a small target passes if a 24px box centred on it touches no other target.
     const spaced = (i) => {
       const r = rects[i];

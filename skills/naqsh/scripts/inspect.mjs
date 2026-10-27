@@ -103,7 +103,8 @@ async function scrollThrough(page) {
     if (result.value) break;
   }
   await new Promise((r) => setTimeout(r, 1000));
-  await page.send('Runtime.evaluate', { expression: 'window.scrollTo(0, 0)' });
+  // 'instant' overrides CSS scroll-behavior: smooth, otherwise the fold shot lands mid-animation.
+  await page.send('Runtime.evaluate', { expression: "window.scrollTo({ top: 0, left: 0, behavior: 'instant' })" });
   await new Promise((r) => setTimeout(r, 600));
 }
 
