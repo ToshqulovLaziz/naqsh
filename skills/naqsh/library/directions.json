@@ -1,0 +1,250 @@
+{
+  "_doc": "Direction library for deal.mjs. Palette roles: ground (page bg), surface (raised bg), ink (text), quiet (secondary text, >= 4.5:1 on ground), rule (lines), accent, accentInk (text on accent, >= 4.5:1). All fonts cover Latin + Cyrillic; inspect.mjs verifies. typeStyle: editorial-serif | display-serif | display-grotesk | grotesk | mono.",
+  "directions": [
+    {
+      "id": "editorial-monument", "surface": "page", "family": "editorial", "boldness": 4, "temperature": "warm", "typeStyle": "editorial-serif",
+      "tags": ["huge name", "serif italic contrast", "graphite+orange", "editorial grid"],
+      "idea": "the name becomes a magazine cover",
+      "type": { "display": "Playfair Display (italic for the accent line)", "text": "Onest", "mono": "JetBrains Mono (meta, time, indices only)",
+        "google": ["Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700", "Onest:wght@400;500;600;700", "JetBrains+Mono:wght@400;500"] },
+      "palette": {
+        "dark": { "ground": "#121110", "surface": "#1b1a18", "ink": "#f2eee6", "quiet": "#a8a29a", "rule": "#2c2a27", "accent": "#ff6a2b", "accentInk": "#160a04" },
+        "light": { "ground": "#f2eee6", "surface": "#e9e4da", "ink": "#161412", "quiet": "#5e5850", "rule": "#d6cfc3", "accent": "#c2410c", "accentInk": "#ffffff" } },
+      "hero": "Name at 15-19vw on two lines; the second line in display italic, accent colour, offset right. A meta row above (status, role, live local time). Tagline and description split under a hairline.",
+      "sections": ["Every section opens with a hairline, a short index and an oversized title", "Services as an index list whose rows fill with accent on hover", "Projects as a staggered 12-column gallery with large images", "Testimonials on an inverted band", "FAQ with a sticky title and an accordion", "CTA as a giant round button over an outlined text ticker"],
+      "motion": "Mask reveals on headings; the two name lines drift apart on scroll.",
+      "allowed": ["italic accent word in the name", "mono meta labels"]
+    },
+    {
+      "id": "poster-monument", "surface": "page", "family": "poster", "boldness": 5, "temperature": "warm", "typeStyle": "display-grotesk",
+      "tags": ["huge cropped name", "black+bronze", "poster"],
+      "idea": "the name becomes a monument",
+      "type": { "display": "Unbounded 800-900", "text": "Onest", "mono": null,
+        "google": ["Unbounded:wght@600;800;900", "Onest:wght@400;500;600"] },
+      "palette": {
+        "dark": { "ground": "#111111", "surface": "#1a1a1a", "ink": "#f5f2ee", "quiet": "#a39e98", "rule": "#2a2928", "accent": "#b08d72", "accentInk": "#111111" },
+        "light": { "ground": "#ecebe8", "surface": "#e2e0dc", "ink": "#121212", "quiet": "#5a5650", "rule": "#cfcbc5", "accent": "#7a5a40", "accentInk": "#ffffff" } },
+      "hero": "The name appears ONCE, as a cropped monument fitted to the full width along the bottom of the first screen (measure per locale). Intro, actions and one live element sit above it.",
+      "sections": ["Work as big project names; hover or focus swaps the screenshot in a sticky frame", "Stats as a receipt whose rows really add up", "Capabilities at poster scale", "Quotes on slightly rotated paper slips", "FAQ as two-column reading text", "CTA as a full-width accent band with one word fitted to the width"],
+      "motion": "The monument scales down as the hero leaves; staggered arrivals per section.",
+      "allowed": ["text cropped by the viewport edge"]
+    },
+    {
+      "id": "oxblood-press", "surface": "page", "family": "editorial", "boldness": 4, "temperature": "warm", "typeStyle": "editorial-serif",
+      "tags": ["serif italic contrast", "dark warm", "gold", "luxury editorial"],
+      "idea": "the portfolio becomes a printed quarterly",
+      "type": { "display": "Cormorant Garamond (italic)", "text": "Manrope", "mono": "IBM Plex Mono",
+        "google": ["Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700", "Manrope:wght@400;500;700", "IBM+Plex+Mono:wght@400;500"] },
+      "palette": {
+        "dark": { "ground": "#1a0f10", "surface": "#241517", "ink": "#f3e9dc", "quiet": "#bfa99a", "rule": "#3a2527", "accent": "#d4a24c", "accentInk": "#1a0f10" },
+        "light": { "ground": "#f6efe4", "surface": "#ede3d4", "ink": "#2a1214", "quiet": "#6b5450", "rule": "#dccdba", "accent": "#7d1d24", "accentInk": "#f6efe4" } },
+      "hero": "Centred masthead: a small dateline, the name in Cormorant italic at about 12vw, a gold rule, one-line tagline. The work starts right below like a contents page.",
+      "sections": ["Projects as a contents page (title, role, year as the page number)", "Services as short paragraphs with drop caps", "Pull-quote testimonials in large italic", "FAQ as a Q and A column", "CTA as a short signed letter"],
+      "motion": "The gold rule draws on load; slow fades on scroll only.",
+      "allowed": ["centred layout", "italic headings"]
+    },
+    {
+      "id": "swiss-signal", "surface": "page", "family": "grotesk", "boldness": 4, "temperature": "neutral", "typeStyle": "display-grotesk",
+      "tags": ["swiss grid", "red", "big numerals", "thick rules"],
+      "idea": "the portfolio becomes a Swiss transit poster",
+      "type": { "display": "Golos Text 900", "text": "Golos Text", "mono": "JetBrains Mono",
+        "google": ["Golos+Text:wght@400;500;700;900", "JetBrains+Mono:wght@400;500"] },
+      "palette": {
+        "light": { "ground": "#f4f1ea", "surface": "#ebe7de", "ink": "#111111", "quiet": "#55524c", "rule": "#111111", "accent": "#e2231a", "accentInk": "#ffffff" },
+        "dark": { "ground": "#111111", "surface": "#1b1b1b", "ink": "#f4f1ea", "quiet": "#a19d96", "rule": "#f4f1ea", "accent": "#ff3b30", "accentInk": "#111111" } },
+      "hero": "Strict 12-column grid with visible thick rules. Name huge in weight 900, flush left. A red square block holds status and local time. Columns of facts underneath.",
+      "sections": ["Projects as a timetable (number, name, type, year)", "Services as grid cells", "Testimonials as quoted columns", "FAQ in two columns", "CTA as a red full-bleed block"],
+      "motion": "Mechanical: short slides on a 4px grid, no easing flourishes.",
+      "allowed": ["section numbering (the grid is a real sequence)", "thick rules"]
+    },
+    {
+      "id": "suzani-bloom", "surface": "page", "family": "subject-world", "boldness": 5, "temperature": "warm", "typeStyle": "display-serif",
+      "tags": ["uzbek craft", "pomegranate", "saffron", "pattern"],
+      "idea": "Uzbek suzani embroidery becomes the frame for the work",
+      "type": { "display": "Yeseva One", "text": "Onest", "mono": null,
+        "google": ["Yeseva+One", "Onest:wght@400;500;600;700"] },
+      "palette": {
+        "light": { "ground": "#f5efe4", "surface": "#ece3d3", "ink": "#1d1a2e", "quiet": "#5c5566", "rule": "#d8ccb8", "accent": "#b3263a", "accentInk": "#ffffff" },
+        "dark": { "ground": "#17142a", "surface": "#211d38", "ink": "#f5efe4", "quiet": "#b7aec4", "rule": "#332d52", "accent": "#f2a900", "accentInk": "#17142a" } },
+      "hero": "Name beside a large suzani medallion drawn in SVG (concentric petals in pomegranate, saffron and indigo). The medallion turns slightly with the pointer.",
+      "sections": ["Projects framed by an embroidered border pattern", "Services as pattern swatches instead of icons", "Testimonials on cloth-coloured panels", "FAQ plain", "CTA as an indigo field with a saffron action"],
+      "motion": "Medallion petals bloom on load; static under reduced motion.",
+      "allowed": ["decorative pattern"]
+    },
+    {
+      "id": "registan-tile", "surface": "page", "family": "subject-world", "boldness": 4, "temperature": "neutral", "typeStyle": "display-serif",
+      "tags": ["uzbek architecture", "turquoise", "lapis", "geometric"],
+      "idea": "the Registan's tile geometry becomes the grid",
+      "type": { "display": "Prata", "text": "Manrope", "mono": null,
+        "google": ["Prata", "Manrope:wght@400;500;700"] },
+      "palette": {
+        "light": { "ground": "#efe6d2", "surface": "#e6dbc3", "ink": "#14213d", "quiet": "#4f5668", "rule": "#d2c4a6", "accent": "#0f6e70", "accentInk": "#ffffff" },
+        "dark": { "ground": "#0e1a33", "surface": "#152447", "ink": "#efe6d2", "quiet": "#a9b4c9", "rule": "#23365e", "accent": "#3cc1c0", "accentInk": "#0e1a33" } },
+      "hero": "An arch-shaped window (CSS mask) holds the lead project screenshot; the name in Prata on the left; a girih tile band (CSS conic gradients) under the fold line.",
+      "sections": ["Projects in arch frames", "Services as tile cells", "Testimonials in a colonnade of narrow columns", "FAQ plain", "CTA on a lapis band"],
+      "motion": "The tile band assembles on load.",
+      "allowed": ["decorative pattern", "arch masks"]
+    },
+    {
+      "id": "brutal-type", "surface": "page", "family": "brutal", "boldness": 5, "temperature": "warm", "typeStyle": "mono",
+      "tags": ["brutalist", "mono", "orange", "raw"],
+      "idea": "the portfolio becomes a raw build log",
+      "type": { "display": "Dela Gothic One", "text": "JetBrains Mono", "mono": "JetBrains Mono",
+        "google": ["Dela+Gothic+One", "JetBrains+Mono:wght@400;500;700"] },
+      "palette": {
+        "light": { "ground": "#ece9e1", "surface": "#ffffff", "ink": "#0a0a0a", "quiet": "#4a4a4a", "rule": "#0a0a0a", "accent": "#ff4d00", "accentInk": "#0a0a0a" },
+        "dark": { "ground": "#0a0a0a", "surface": "#161616", "ink": "#ece9e1", "quiet": "#a3a3a3", "rule": "#ece9e1", "accent": "#ff4d00", "accentInk": "#0a0a0a" } },
+      "hero": "3px borders everywhere, a table-like layout, the name in Dela Gothic One at about 14vw, an orange stamp with status and time.",
+      "sections": ["Projects as a log table with hard borders", "Services as a definition list", "Testimonials as quoted log lines", "FAQ as plain blocks", "CTA as an orange stamp button"],
+      "motion": "None except instant state changes and a blinking caret.",
+      "allowed": ["hard 6px offset shadows", "mono body text", "uppercase labels"]
+    },
+    {
+      "id": "forest-brass", "surface": "page", "family": "editorial", "boldness": 3, "temperature": "warm", "typeStyle": "editorial-serif",
+      "tags": ["split layout", "forest", "brass", "calm luxury"],
+      "idea": "the portfolio becomes a two-page spread",
+      "type": { "display": "Spectral (italic)", "text": "Commissioner", "mono": null,
+        "google": ["Spectral:ital,wght@0,400;0,600;1,400;1,600", "Commissioner:wght@400;500;600"] },
+      "palette": {
+        "light": { "ground": "#efe7da", "surface": "#e5dccb", "ink": "#1f3d2b", "quiet": "#4f5a50", "rule": "#cfc3ad", "accent": "#8a6a35", "accentInk": "#ffffff" },
+        "dark": { "ground": "#13241a", "surface": "#1a2f22", "ink": "#efe7da", "quiet": "#b3bba9", "rule": "#2b4535", "accent": "#c9a46a", "accentInk": "#13241a" } },
+      "hero": "Split screen: the left half is a deep forest field with the name in Spectral italic; the right half is the lead project image, full bleed.",
+      "sections": ["Projects as alternating spreads", "Services as a short essay", "One large testimonial", "FAQ plain", "CTA as a brass-ruled closing line"],
+      "motion": "Slow crossfades only.",
+      "allowed": ["italic headings"]
+    },
+    {
+      "id": "amber-workwall", "surface": "page", "family": "work-first", "boldness": 4, "temperature": "warm", "typeStyle": "display-grotesk",
+      "tags": ["work first", "amber", "charcoal", "screenshots"],
+      "idea": "the shipped work is the hero",
+      "type": { "display": "Wix Madefor Display 800", "text": "Wix Madefor Display", "mono": "JetBrains Mono",
+        "google": ["Wix+Madefor+Display:wght@400;600;800", "JetBrains+Mono:wght@400;500"] },
+      "palette": {
+        "dark": { "ground": "#161514", "surface": "#201f1d", "ink": "#f3f0ea", "quiet": "#a6a29b", "rule": "#2e2c29", "accent": "#ffb000", "accentInk": "#161514" },
+        "light": { "ground": "#f3f0ea", "surface": "#e8e4dc", "ink": "#161514", "quiet": "#5c5852", "rule": "#d3cdc2", "accent": "#9a5b00", "accentInk": "#ffffff" } },
+      "hero": "An index of every project beside a large live screenshot well; hover or focus swaps the image. The name is large above the index.",
+      "sections": ["One project opened as a case study", "Services as a short list", "Testimonials with the project they belong to", "FAQ plain", "CTA on amber"],
+      "motion": "Screenshot crossfade; nothing else moves on its own.",
+      "allowed": ["project index numbering"]
+    },
+    {
+      "id": "coral-studio", "surface": "page", "family": "soft", "boldness": 3, "temperature": "warm", "typeStyle": "editorial-serif",
+      "tags": ["soft", "peach", "plum", "friendly"],
+      "idea": "the portfolio becomes a warm studio welcome",
+      "type": { "display": "Literata (italic)", "text": "Manrope", "mono": null,
+        "google": ["Literata:ital,wght@0,400;0,700;1,400;1,700", "Manrope:wght@400;500;700"] },
+      "palette": {
+        "light": { "ground": "#f6e3d4", "surface": "#f0d6c3", "ink": "#3b1f2b", "quiet": "#6e4c58", "rule": "#e3c3ad", "accent": "#c23a22", "accentInk": "#ffffff" },
+        "dark": { "ground": "#2a1620", "surface": "#341c28", "ink": "#f6e3d4", "quiet": "#c9a9b4", "rule": "#4a2a38", "accent": "#ff8a65", "accentInk": "#2a1620" } },
+      "hero": "A lead project screenshot in a soft rounded frame, the name in Literata italic, a one-line greeting and a friendly primary action.",
+      "sections": ["Projects as large rounded cards (varied sizes, never a uniform grid)", "Services as conversational sentences", "Testimonials as speech bubbles", "FAQ as an accordion", "CTA as a warm invitation"],
+      "motion": "Gentle spring on hover; soft fades.",
+      "allowed": ["rounded large radius"]
+    },
+    {
+      "id": "cold-lab", "surface": "page", "family": "grotesk", "boldness": 4, "temperature": "cool", "typeStyle": "display-grotesk",
+      "tags": ["cool", "electric blue", "technical"],
+      "idea": "the portfolio becomes a lab instrument panel",
+      "type": { "display": "Unbounded", "text": "IBM Plex Sans", "mono": "IBM Plex Mono",
+        "google": ["Unbounded:wght@500;700;900", "IBM+Plex+Sans:wght@400;500;600", "IBM+Plex+Mono:wght@400;500"] },
+      "palette": {
+        "light": { "ground": "#e8eef2", "surface": "#dde6ec", "ink": "#0b1b2b", "quiet": "#4a5a6a", "rule": "#c3d0da", "accent": "#1f4fff", "accentInk": "#ffffff" },
+        "dark": { "ground": "#0b1220", "surface": "#111a2e", "ink": "#e8eef2", "quiet": "#9aabbc", "rule": "#1d2a44", "accent": "#6f8cff", "accentInk": "#0b1220" } },
+      "hero": "Name in Unbounded with a readout panel (status, time, stack) styled like instrument labels.",
+      "sections": ["Projects as specimen cards with measurements", "Services as instrument channels", "Testimonials as log entries", "FAQ plain", "CTA as a single electric button"],
+      "motion": "Readout values tick once on load.",
+      "allowed": ["mono labels"]
+    },
+    {
+      "id": "yellow-block", "surface": "page", "family": "poster", "boldness": 5, "temperature": "neutral", "typeStyle": "display-grotesk",
+      "tags": ["condensed", "yellow", "black", "poster"],
+      "idea": "the portfolio becomes a gig poster",
+      "type": { "display": "Oswald 700 (condensed)", "text": "Rubik", "mono": null,
+        "google": ["Oswald:wght@500;700", "Rubik:wght@400;500;700"] },
+      "palette": {
+        "light": { "ground": "#ffd400", "surface": "#ffe14d", "ink": "#111111", "quiet": "#3d3500", "rule": "#111111", "accent": "#111111", "accentInk": "#ffd400" },
+        "dark": { "ground": "#111111", "surface": "#1c1c1c", "ink": "#f5f5f0", "quiet": "#a6a6a0", "rule": "#333333", "accent": "#ffd400", "accentInk": "#111111" } },
+      "hero": "Condensed name stacked in 3-4 lines filling the height of the first screen; facts set like poster credits.",
+      "sections": ["Projects as a line-up list", "Services as big stacked words", "Testimonials as press quotes", "FAQ plain", "CTA as a black ticket stub"],
+      "motion": "Lines slide in from alternate sides on load.",
+      "allowed": ["uppercase display", "full-bleed colour"]
+    },
+
+    {
+      "id": "warm-ledger", "surface": "app", "family": "app-editorial", "boldness": 3, "temperature": "warm", "typeStyle": "editorial-serif",
+      "tags": ["warm paper", "serif titles", "burnt orange"],
+      "idea": "the ERP becomes a well-kept ledger book",
+      "type": { "display": "PT Serif (page titles, KPI numerals)", "text": "IBM Plex Sans", "mono": "IBM Plex Mono (IDs, SKUs)",
+        "google": ["PT+Serif:ital,wght@0,400;0,700;1,400", "IBM+Plex+Sans:wght@400;500;600", "IBM+Plex+Mono:wght@400;500"] },
+      "palette": {
+        "light": { "ground": "#f5f2ec", "surface": "#fffdf9", "ink": "#1c1a17", "quiet": "#5f5a52", "rule": "#e2ddd3", "accent": "#b4441a", "accentInk": "#ffffff" },
+        "dark": { "ground": "#151413", "surface": "#1e1c1a", "ink": "#efebe4", "quiet": "#a8a198", "rule": "#2e2b28", "accent": "#f08a4b", "accentInk": "#151413" } },
+      "system": { "shell": "sidebar on warm paper, active item marked by an accent bar", "density": "comfortable 40px rows",
+        "kpi": "large serif numerals, label above, delta with sign and arrow below", "table": "hairline rows, sticky header, tabular numerals, money right-aligned with a quiet currency suffix",
+        "status": "shape + text, muted colours", "chart": "neutral bars, current period in accent" }
+    },
+    {
+      "id": "graphite-console", "surface": "app", "family": "app-console", "boldness": 4, "temperature": "warm", "typeStyle": "display-grotesk",
+      "tags": ["dark first", "amber", "dense"],
+      "idea": "the ERP becomes a control-room console",
+      "type": { "display": "Geologica 800 (titles, KPI numerals)", "text": "Geologica", "mono": "JetBrains Mono",
+        "google": ["Geologica:wght@400;500;600;800", "JetBrains+Mono:wght@400;500"] },
+      "palette": {
+        "dark": { "ground": "#111214", "surface": "#18191c", "ink": "#ececec", "quiet": "#a0a3a8", "rule": "#26282c", "accent": "#f5a524", "accentInk": "#111214" },
+        "light": { "ground": "#f4f3f1", "surface": "#ffffff", "ink": "#141517", "quiet": "#5b5e63", "rule": "#e1dfdb", "accent": "#a35f00", "accentInk": "#ffffff" } },
+      "system": { "shell": "narrow icon+label sidebar, topbar with live clock and command search", "density": "compact 32px rows",
+        "kpi": "KPI strip with very large numerals and sparklines", "table": "zebra-free, row dividers, monospace IDs, sticky header and first column",
+        "status": "small coloured pill + text", "chart": "amber line on grey grid" }
+    },
+    {
+      "id": "bazaar", "surface": "app", "family": "app-expressive", "boldness": 4, "temperature": "warm", "typeStyle": "display-grotesk",
+      "tags": ["uzbek colour", "pomegranate", "expressive headings"],
+      "idea": "the ERP carries the colours of a Tashkent bazaar",
+      "type": { "display": "Unbounded (page titles, KPI numerals)", "text": "Onest", "mono": "JetBrains Mono",
+        "google": ["Unbounded:wght@500;700", "Onest:wght@400;500;600", "JetBrains+Mono:wght@400;500"] },
+      "palette": {
+        "light": { "ground": "#f3ece0", "surface": "#fffaf2", "ink": "#1e1b2e", "quiet": "#5d566a", "rule": "#e2d6c2", "accent": "#b3263a", "accentInk": "#ffffff" },
+        "dark": { "ground": "#17142a", "surface": "#1f1b36", "ink": "#f3ece0", "quiet": "#b4abc2", "rule": "#2f2a4d", "accent": "#ff6b7d", "accentInk": "#17142a" } },
+      "system": { "shell": "indigo sidebar with sand content area", "density": "comfortable 40px rows",
+        "kpi": "colour-blocked KPI tiles (one accent tile, others sand)", "table": "sand header, tabular numerals, pomegranate selection edge",
+        "status": "shape + text; saffron, indigo, pomegranate, olive", "chart": "pomegranate current bar, sand others" }
+    },
+    {
+      "id": "nordic-teal", "surface": "app", "family": "app-calm", "boldness": 2, "temperature": "cool", "typeStyle": "grotesk",
+      "tags": ["calm", "teal", "airy"],
+      "idea": "the ERP becomes a quiet, airy workspace",
+      "type": { "display": "Inter 700", "text": "Inter", "mono": "JetBrains Mono",
+        "google": ["Inter:wght@400;500;600;700", "JetBrains+Mono:wght@400;500"] },
+      "palette": {
+        "light": { "ground": "#f6f8f9", "surface": "#ffffff", "ink": "#0f1b24", "quiet": "#50606c", "rule": "#dfe5ea", "accent": "#0e7c7b", "accentInk": "#ffffff" },
+        "dark": { "ground": "#0d1418", "surface": "#131d23", "ink": "#e6edf1", "quiet": "#9db0bc", "rule": "#1f2d36", "accent": "#3cc6c4", "accentInk": "#0d1418" } },
+      "system": { "shell": "topbar navigation, wide content", "density": "comfortable 44px rows",
+        "kpi": "plain numbers in a row", "table": "generous padding, light dividers", "status": "dot + text", "chart": "teal line" }
+    },
+    {
+      "id": "bold-blocks", "surface": "app", "family": "app-expressive", "boldness": 5, "temperature": "warm", "typeStyle": "display-grotesk",
+      "tags": ["black sidebar", "tomato", "big type"],
+      "idea": "the ERP becomes a bold signage system",
+      "type": { "display": "Manrope 800", "text": "Manrope", "mono": "IBM Plex Mono",
+        "google": ["Manrope:wght@400;500;600;800", "IBM+Plex+Mono:wght@400;500"] },
+      "palette": {
+        "light": { "ground": "#f4f1ec", "surface": "#ffffff", "ink": "#111111", "quiet": "#57534e", "rule": "#e0dbd3", "accent": "#ff5a36", "accentInk": "#111111" },
+        "dark": { "ground": "#0f0f0f", "surface": "#1a1a1a", "ink": "#f4f1ec", "quiet": "#a39e97", "rule": "#2a2a2a", "accent": "#ff6a4a", "accentInk": "#111111" } },
+      "system": { "shell": "black sidebar with large white labels; tomato active block", "density": "comfortable 40px rows",
+        "kpi": "huge 800-weight numerals, one tomato tile", "table": "bold header row, tabular numerals, tomato selection",
+        "status": "solid block label + text", "chart": "black bars, tomato current" }
+    },
+    {
+      "id": "paper-ink", "surface": "app", "family": "app-editorial", "boldness": 3, "temperature": "neutral", "typeStyle": "editorial-serif",
+      "tags": ["serif", "navy ink", "document"],
+      "idea": "the ERP becomes a set of well-printed forms",
+      "type": { "display": "PT Serif", "text": "PT Sans", "mono": "PT Mono",
+        "google": ["PT+Serif:ital,wght@0,400;0,700;1,400", "PT+Sans:ital,wght@0,400;0,700;1,400", "PT+Mono"] },
+      "palette": {
+        "light": { "ground": "#fbf8f1", "surface": "#ffffff", "ink": "#1d2733", "quiet": "#56606b", "rule": "#e6e0d2", "accent": "#1d4e89", "accentInk": "#ffffff" },
+        "dark": { "ground": "#12161c", "surface": "#1a2029", "ink": "#ece7dc", "quiet": "#a5adb8", "rule": "#262e3a", "accent": "#7fb0ff", "accentInk": "#12161c" } },
+      "system": { "shell": "sidebar like a binder index", "density": "comfortable 40px rows",
+        "kpi": "serif numerals with ruled boxes", "table": "form-like ruled table, tabular numerals", "status": "stamp-like text label", "chart": "navy bars" }
+    }
+  ]
+}

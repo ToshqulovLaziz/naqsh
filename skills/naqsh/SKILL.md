@@ -5,8 +5,8 @@ description: Design or redesign frontend UI so it looks deliberately designed, n
 
 # naqsh
 
-v0.2 (P1). `<skill>` below means this skill's base directory. Scripts need Node ≥ 22 and a local
-Chrome/Edge; nothing to install. The direction library and `deal.mjs` arrive in P2.
+v0.3 (P2). `<skill>` below means this skill's base directory. Scripts need Node ≥ 22 and a local
+Chrome/Edge; nothing to install.
 
 ## 1. Route
 
@@ -52,11 +52,24 @@ add the judged checks from `references/rules.md`. Do not edit code.
   Never invent proof: no fake logos, testimonials, metrics or screenshots.
 - **Audience and job:** who looks, what they must do or learn first.
 
-## 5. Direction
+## 5. Direction (dealt, taste-driven)
 
-`page`: three directions per `references/page.md`, competitor test, choose one, spend boldness in one place.
-`app`: decide the system per `references/app.md` (shell, density, type, colour, table and form style).
-Write the decision into `DESIGN.md` before building.
+```
+node <skill>/scripts/deal.mjs --surface <page|app> --options 3 --project <projectRoot>
+```
+
+The script scores the library against the user's **taste profile** (`~/.naqsh/taste.json`, overridable per project
+in `<project>/.naqsh/taste.json`) and recent picks, and deals 3 directions from different families.
+- If the user is present, show the three (idea, type, palette, hero) and let them choose. Otherwise choose the best
+  fit for the content and say why.
+- `deal.mjs --pick <id>` prints the full sheet (sections, motion, font import, light/dark tokens) and logs the pick.
+  Build **from the sheet**: its type, palette and hero are the contract. Adapt sizes and sections to the real
+  content; deviate only with a written reason (e.g. missing material).
+- `page`: also read `references/page.md`. `app`: also read `references/app.md`; the sheet's `system` block decides
+  shell, density, KPI, table, status and chart style.
+
+**Taste feedback.** When the user says what they like or dislike about a result, update `~/.naqsh/taste.json`
+(`boldness` 1–5, `temperature` warm|cool|neutral|any, `typeStyles`, `likes`, `avoid`, `notes`) and tell them.
 
 ## 6. Floor (never waived; scripts check most of it)
 
@@ -68,11 +81,12 @@ Write the decision into `DESIGN.md` before building.
 - `prefers-reduced-motion` respected; no `transition: all`; animate transform/opacity.
 - New tokens scoped so untouched pages do not change.
 
-## 7. Tells to avoid (reflex: waive only with a reason)
+## 7. Generated-UI tells (reflex: waive only when the dealt sheet allows it)
 
-Near-black + one neon accent; cream + terracotta; default Tailwind indigo/violet; glow, glass, aurora blobs,
-gradient text; tracked-uppercase eyebrows above headings; `01 /` numbering that is not a real sequence;
-identical rounded+shadow card grids; a hero band of round metrics; one italic word inside a roman headline.
+Default Tailwind indigo/violet; glow, glass, aurora blobs, orbiting icons, shimmer buttons, gradient text;
+tracked-uppercase eyebrows above every heading; identical rounded+shadow card grids; a hero band of round metrics;
+the same name or title repeated in one screen. Bold scale, strong colour and serif/sans contrast are **not**
+tells — timidity is a failure too: if the result could pass for a template, push the sheet's idea harder.
 
 ## 8. Build loop
 
@@ -83,5 +97,6 @@ identical rounded+shadow card grids; a hero band of round metrics; one italic wo
 
 ## 9. Report
 
-Write `DESIGN.md` in the project root (or where the user says): direction and idea sentence, tokens, type,
-key decisions, before → after check counts, waivers with reasons, judged checks, open items.
+Write `DESIGN.md` in the project root (or where the user says): dealt options and the pick, idea sentence,
+tokens, type, key decisions, before → after check counts, waivers with reasons, judged checks, open items.
+End by asking the user what they like and dislike, so the taste profile improves.

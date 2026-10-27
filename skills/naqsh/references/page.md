@@ -1,48 +1,43 @@
 # Surface: page
 
-For landing, portfolio, marketing and product pages. The page must make one argument and be remembered for one idea.
+For landing, portfolio, marketing and product pages. The page makes one argument and is remembered for one idea.
+The dealt sheet gives the idea, type, palette and hero; this file says how to carry it.
 
 ## Argument
 
-Write the page as claims in order. Each section must carry one claim and its proof (real work, real numbers,
+Write the page as claims in order. Each section carries one claim and its proof (real work, real numbers,
 real quotes). A section with no claim is cut. Typical order: who/what → proof (the work) → how/what you get →
 what others say → objections (FAQ) → one action.
 
-## Direction
+## Carry the idea at full strength
 
-Write three directions that differ in kind, not in colour:
-
-1. **Subject world** — something from the subject's own trade, tools, city or culture
-   (a frontend developer: the inspector, the grid, the console; a Tashkent business: its streets, crafts, signage).
-2. **Typographic** — the words carry the page: scale, crop, rhythm.
-3. **Work-first** — the real product, screenshots or objects lead; chrome stays quiet.
-
-For each: idea sentence `"[subject thing] becomes [device]"`, one live element (real data that changes:
-local time, status, latest item), type pairing, 4–6 named hex values with roles, hero sketch.
-
-Kill any direction that a typical site in the category would also produce. Choose one and write why.
+- The first screen must show the idea **unmistakably** at 1440×900 and 390×844: scale, crop, colour or motion
+  that a template would never use. If a stranger could not tell this page from a theme demo, it is not done.
+- Display type is big: the hero heading is usually 10–20vw on desktop, sized for the longest locale at 375 px
+  (measure, use `clamp()`, or fit-to-width with JS for monument names).
+- Use the full palette: ground, surface and accent are all allowed to take whole sections (inverted bands,
+  full-bleed accent blocks). Keep text contrast; scripts check it.
+- Contrast between type roles is welcome: serif italic against grotesk, huge against tiny, mono only for real data.
+- Each section gets its own composition from the sheet's blueprints; never repeat one card grid down the page.
 
 ## Type
 
-- Two families at most (+ one mono only for real data). Both must cover every locale script.
-- Cyrillic-safe display faces: Unbounded, Onest, Manrope, Inter Display, Golos Text, Montserrat Alternates, PT Serif,
-  Literata, Playfair Display, Cormorant, IBM Plex Sans/Serif/Mono, JetBrains Mono, Geologica, Raleway.
-  No Cyrillic: Instrument Serif, Boska, Clash Display, Satoshi, General Sans. Anything else: verify the
-  font's character sets before choosing; `inspect --locales ru` confirms it.
-- Load fonts **before** `@import "tailwindcss"` (or via `<link>` in index.html) and confirm with `inspect`.
-- Set the hero size for the longest locale at 375 px, not for English at 1440 px.
+- Use the sheet's fonts; two families (+ one mono for real data). The sheet's `@import` line goes **above**
+  `@import "tailwindcss"` (or use `<link>` in index.html). Confirm with `inspect` that they render.
+- Cyrillic-safe faces in the library are verified; if you swap a font, check its Cyrillic and run
+  `inspect --locales ru`. No Cyrillic: Instrument Serif, Boska, Clash Display, Satoshi, General Sans.
 
 ## Colour
 
-Name roles: ground, surface, ink, quiet ink, rule, accent, accent-ink. Accent covers < 10 % of a screen.
-Define light and dark as the same roles. Check `contrast` in both themes.
+Use the sheet's roles as CSS variables scoped to what you change, light and dark. Accent may be loud;
+body text stays `ink`/`quiet` on `ground`/`surface`.
 
 ## Motion
 
-One authored moment (load, or the live element). Everything else responds to the user: hover, focus, open.
-No infinite background animation. Respect `prefers-reduced-motion`.
+The sheet's signature motion, done well, plus responsive feedback (hover, focus, open). No infinite background
+animation unless the sheet asks for it. Respect `prefers-reduced-motion`.
 
-## Hero
+## Material
 
-The first screen at 1440×900 and 390×844 shows: who/what, the one idea, one primary action, and a glimpse of proof.
-`inspect --surface page` warns when the h1 does not fit the first screen.
+Use the real screenshots, names and numbers. Mark placeholder numbers as placeholders in `DESIGN.md`.
+The name or page title appears once per screen.

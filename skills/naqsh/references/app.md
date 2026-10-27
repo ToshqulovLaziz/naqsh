@@ -1,7 +1,15 @@
 # Surface: app (ERP, admin, dashboards)
 
-People work here for hours. Optimise for scanning, entering data and not making mistakes. Novelty lives in
-details (type, numbers, states), not in layout tricks.
+People work here for hours. Optimise for scanning, entering data and not making mistakes — and still make it
+look like **this company's** product, not a template.
+
+## Character (from the dealt sheet)
+
+- Display face for page titles and KPI numerals, large and confident (28–40 px titles, 32–56 px KPI numbers).
+- The sheet's palette goes beyond the button: sidebar or header in a strong colour, a coloured KPI tile, the
+  current period in accent on charts, selection edges in accent.
+- One recognisable detail repeated everywhere (ledger rules, stamp-like status, colour-blocked tiles...).
+- Calm is not grey: neutral surfaces are warm or cool on purpose, never default Tailwind gray/slate.
 
 ## System first
 
