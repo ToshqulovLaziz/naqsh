@@ -3,7 +3,7 @@
 Design skill for Claude Code. Covers web pages (`page`) and ERP/admin screens (`app`), in `build`, `redesign`
 and `audit` modes. Built for uz/ru/en projects and Windows-friendly (Node only).
 
-Status: **v0.2 — checks (P1)**: `lint.mjs` and `inspect.mjs` run; direction library comes in P2. See the roadmap below.
+Status: **v0.3 — directions (P2)**: taste-driven `deal.mjs` over an 18-direction library, plus `lint.mjs` and `inspect.mjs`. See the roadmap below.
 
 ## Install
 
