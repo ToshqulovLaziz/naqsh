@@ -1,0 +1,5 @@
+# Keep LF everywhere so scripts parse the same on Windows, macOS and Linux.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.woff2 binary

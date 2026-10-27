@@ -1,0 +1,4 @@
+node_modules/
+.naqsh/
+*.log
+.DS_Store

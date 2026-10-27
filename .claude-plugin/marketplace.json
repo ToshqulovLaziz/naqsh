@@ -1,0 +1,26 @@
+{
+  "name": "naqsh",
+  "owner": {
+    "name": "Laziz Toshqulov",
+    "url": "https://github.com/ToshqulovLaziz"
+  },
+  "metadata": {
+    "description": "naqsh: design skill for web pages and ERP screens."
+  },
+  "plugins": [
+    {
+      "name": "naqsh",
+      "source": "./",
+      "description": "Design skill for web pages and ERP/admin screens: dealt directions, tiered rules, real-browser checks, uz/ru/en aware.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Laziz Toshqulov",
+        "url": "https://github.com/ToshqulovLaziz"
+      },
+      "homepage": "https://github.com/ToshqulovLaziz/naqsh",
+      "repository": "https://github.com/ToshqulovLaziz/naqsh",
+      "license": "MIT",
+      "category": "design"
+    }
+  ]
+}

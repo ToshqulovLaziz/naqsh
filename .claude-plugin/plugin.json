@@ -1,0 +1,13 @@
+{
+  "name": "naqsh",
+  "version": "0.1.0",
+  "description": "Design skill for web pages and ERP/admin screens: dealt directions, tiered rules, real-browser checks, uz/ru/en aware.",
+  "author": {
+    "name": "Laziz Toshqulov",
+    "url": "https://github.com/ToshqulovLaziz"
+  },
+  "homepage": "https://github.com/ToshqulovLaziz/naqsh",
+  "repository": "https://github.com/ToshqulovLaziz/naqsh",
+  "license": "MIT",
+  "keywords": ["design", "frontend", "ui", "erp", "tailwind", "react", "i18n"]
+}
