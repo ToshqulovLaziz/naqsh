@@ -84,7 +84,8 @@ async function fontChecks(page) {
         const { fonts } = await page.send('CSS.getPlatformFontsForNode', { nodeId });
         if (!fonts.length) continue;
         const norm = (s) => s.toLowerCase().replace(/\s+(variable|vf)$/, '');
-        const own = fonts.filter((f) => norm(f.familyName).startsWith(norm(declared)));
+        // Some web fonts (e.g. Fontshare) carry no usable family name, so any downloaded font counts as the declared one.
+        const own = fonts.filter((f) => f.isCustomFont || norm(f.familyName).startsWith(norm(declared)));
         const other = fonts.filter((f) => !own.includes(f) && f.glyphCount >= 3);
         if (!own.length) add(`"${declared}" not loaded, renders "${fonts[0].familyName}"`, sel);
         else if (other.length) add(`"${declared}" missing glyphs, falls back to ${other.map((f) => `"${f.familyName}"`).join(', ')}`, sel);
