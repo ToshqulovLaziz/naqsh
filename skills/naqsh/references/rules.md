@@ -25,6 +25,10 @@ node <skill>/scripts/inspect.mjs http://localhost:PORT \
 - Extra locales are checked at the narrowest width only; add `--full` for every width.
 - Screenshots land in `--out` as `<route>-<width>-<locale>-<theme>-{fold,full}.png`. **Look at them** — the checks
   measure, they do not judge.
+- `--details` also saves 2x crops of each control kind (language switch, theme toggle, search, select, date,
+  number, checkbox, status, table head, active nav, mark) to `<out>/details/` for the detail pass.
+- `native-control` (browser-default select/date/number/checkbox/radio) and `content-clipped` (text cut by a
+  container edge) are reflex rules: fix them or waive with a reason.
 - Browser lookup: Chrome, Edge, Chromium, Brave, Playwright's Chromium. Set `CHROME_PATH` if none is found.
 
 ## Reading findings

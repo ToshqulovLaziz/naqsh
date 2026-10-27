@@ -36,6 +36,8 @@ export const RULES = {
   'hero-below-fold': { tier: 'reflex', kind: 'render', title: 'Main heading not fully visible in the first screen', fix: 'Fit the h1 inside the first viewport at 1440×900.' },
   'table-numeric-align': { tier: 'reflex', kind: 'render', title: 'Numeric table cell not right-aligned', fix: 'text-right on numeric columns (header too).' },
   'table-tabular-nums': { tier: 'reflex', kind: 'render', title: 'Numeric table cell without tabular figures', fix: 'Add tabular-nums to numeric columns.' },
+  'native-control': { tier: 'reflex', kind: 'render', title: 'Browser-default control (select, date, number, checkbox, radio)', fix: 'Build the control to the sheet (see references/components.md); appearance:none at minimum.' },
+  'content-clipped': { tier: 'reflex', kind: 'render', title: 'Text cut by the edge of a clipping or scrolling container', fix: 'Fit the content (stack, wrap, fewer columns) or show a clear scroll affordance.' },
 };
 
 export const ruleMeta = (id) => RULES[id] ?? { tier: 'reflex', kind: 'unknown', title: id, fix: '' };

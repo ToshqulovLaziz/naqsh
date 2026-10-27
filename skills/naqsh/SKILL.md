@@ -5,7 +5,7 @@ description: Design or redesign frontend UI so it looks deliberately designed, n
 
 # naqsh
 
-v0.5. `<skill>` below means this skill's base directory. Scripts need Node ≥ 22 and a local
+v0.6. `<skill>` below means this skill's base directory. Scripts need Node ≥ 22 and a local
 Chrome/Edge; nothing to install.
 
 ## 1. Route
@@ -99,15 +99,18 @@ tells — timidity is a failure too: if the result could pass for a template, pu
 2. After each step: `lint`. After the main screen: build, preview, `inspect` on that route only (widest + narrowest
    width, first locale, both themes). At the end: the full matrix. **Open the screenshots and look** each time.
    Fix, repeat — at most 3 rounds after the first full pass. Read only the files you change; keep turns short.
-3. When the first full pass is at 0 floor FAIL, write `DESIGN.md` (draft) and spawn the reviewer in a fresh
+3. **Detail pass:** read `references/components.md`; every control is built to it (no `native-control` left
+   unwaived), the signature moment exists. Run `inspect ... --details` and open every crop in `<out>/details/`;
+   fix until each looks intentional at 2x.
+4. When the detail pass is done and the build is at 0 floor FAIL, write `DESIGN.md` (draft) and spawn the reviewer in a fresh
    context — Agent tool, `subagent_type: "naqsh:naqsh-reviewer"` — with: project root, surface, mode, direction id,
-   `<skill>` path, screenshot folder, preview URL and the inspect flags. Apply its `floor`, `idea` and `fidelity`
+   `<skill>` path, screenshot folder (with `details/`), preview URL and the inspect flags. Apply its `floor`, `idea` and `fidelity`
    fixes (others at your judgement), rerun the checks. One review round; a second only if the verdict was `rework`.
    If no Agent tool is available, do the review yourself from `agents/naqsh-reviewer.md` after rereading the screenshots.
-4. Finish with 0 floor FAIL, every reflex fixed or waived, and the project's build passing. Stop the preview server.
+5. Finish with 0 floor FAIL, every reflex fixed or waived, and the project's build passing. Stop the preview server.
 
 ## 9. Report
 
 Write `DESIGN.md` in the project root (or where the user says): dealt options and the pick, idea sentence,
-tokens, type, key decisions, before → after check counts, waivers with reasons, judged checks, open items.
+tokens, type, key decisions, the signature moment, before → after check counts, waivers with reasons, judged checks, open items.
 End by asking the user what they like and dislike, so the taste profile improves.

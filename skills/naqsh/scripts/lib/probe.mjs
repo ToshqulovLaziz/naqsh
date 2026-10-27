@@ -177,5 +177,24 @@ export function probe(opts) {
     }
   });
 
+  // Native, unstyled controls: browser-default select, date/number fields, checkboxes, radios.
+  out.native = all.filter((el) => el.matches('select, input[type=date], input[type=time], input[type=datetime-local], input[type=month], input[type=number], input[type=checkbox], input[type=radio]')
+    && visible(el) && !['none'].includes(getComputedStyle(el).appearance))
+    .map((el) => `${el.tagName === 'SELECT' ? 'select' : `input[type=${el.type}]`} ${desc(el)}`)
+    .filter((s, i, a) => a.findIndex((x) => x.split(' ')[0] === s.split(' ')[0]) === i).slice(0, LIMIT);
+
+  // Text cut by a container: partly outside an ancestor that clips or scrolls (e.g. a table cell under the edge).
+  out.clipped = [];
+  for (const el of textEls) {
+    const r = el.getBoundingClientRect();
+    for (let p = el.parentElement; p && p !== document.body; p = p.parentElement) {
+      if (!/(hidden|clip|auto|scroll)/.test(getComputedStyle(p).overflowX)) continue;
+      const pr = p.getBoundingClientRect();
+      if (r.right > pr.right + 1 && r.left < pr.right - 1) { out.clipped.push(`${desc(el)} cut at ${Math.round(r.right - pr.right)}px`); }
+      break;
+    }
+    if (out.clipped.length >= LIMIT) break;
+  }
+
   return out;
 }

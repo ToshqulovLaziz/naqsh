@@ -3,6 +3,9 @@
 People work here for hours. Optimise for scanning, entering data and not making mistakes — and still make it
 look like **this company's** product, not a template.
 
+Tokens, every control (language switcher, select, date, checkbox, toasts...), dark recipe and the signature
+moment: `references/components.md`. Read it before building controls.
+
 ## Answer, don't display (most important)
 
 A work screen wins on what it tells the user, not on decoration. Before styling, write for each screen the question

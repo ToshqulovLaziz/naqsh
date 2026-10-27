@@ -11,6 +11,7 @@
 //   --surface page|app            page enables the hero-in-first-screen check (default page)
 //   --out .naqsh/inspect          screenshot folder (default)
 //   --no-shots                    skip screenshots
+//   --details                     also save 2x crops of each control kind to <out>/details/ (detail pass)
 //   --full                        every locale at every width
 //   --json                        machine-readable findings
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -43,6 +44,22 @@ const themes = list(opt('--themes', '')).map((t) => {
 const surface = opt('--surface', 'page');
 const outDir = resolve(opt('--out', join('.naqsh', 'inspect')));
 const shots = !has('--no-shots');
+const details = shots && has('--details');
+// First visible match of each selector is cropped at 2x into <out>/details/.
+const DETAIL_KINDS = [
+  ['lang-switch', '[aria-label*="lang" i], [aria-label*="til" i], [aria-label*="язык" i], select:has(option[value="ru"]), [data-lang-switch]'],
+  ['theme-toggle', '[aria-label*="theme" i], [aria-label*="mavzu" i], [aria-label*="тем" i], [role=switch]'],
+  ['search', 'input[type=search], input[placeholder*="qidir" i], input[placeholder*="search" i], input[placeholder*="поиск" i]'],
+  ['primary-button', 'main button:not([aria-label]), main a[class*="btn" i]'],
+  ['select', 'select, [role=combobox]'],
+  ['date', 'input[type=date], [data-date-field]'],
+  ['number', 'input[type=number], input[inputmode=numeric], input[inputmode=decimal]'],
+  ['checkbox', 'input[type=checkbox], [role=checkbox]'],
+  ['status', '[class*="pill" i], [class*="badge" i], [class*="status" i], [class*="stamp" i]'],
+  ['table-head', 'thead'],
+  ['nav-active', 'nav [aria-current="page"]'],
+  ['mark', 'header svg, aside svg, nav svg'],
+];
 
 const heightFor = (w) => (w <= 480 ? 844 : w <= 1024 ? 1024 : 900);
 const slug = (r) => (r === '/' ? 'home' : r.replace(/^\/|\/$/g, '').replace(/[^\w-]+/g, '-'));
@@ -157,6 +174,8 @@ try {
     for (const i of m.imgsNoAlt) findings.push(finding('img-missing-alt', 'FAIL', label, i));
     for (const t of m.tableNum) findings.push(finding('table-numeric-align', 'WARN', label, t));
     for (const t of m.tableTab) findings.push(finding('table-tabular-nums', 'WARN', label, t));
+    for (const n of m.native) findings.push(finding('native-control', 'WARN', label, n));
+    for (const c of m.clipped) findings.push(finding('content-clipped', 'WARN', label, c));
     if (m.fontFamilies.length > 3) findings.push(finding('font-count', 'WARN', label, m.fontFamilies.join(', ')));
     if (surface === 'page' && run.w >= 1024 && m.heroBottom && m.heroBottom > m.vh) {
       findings.push(finding('hero-below-fold', 'WARN', label, `h1 bottom at ${m.heroBottom}px, viewport ${m.vh}px`));
@@ -173,6 +192,25 @@ try {
         clip: { x: 0, y: 0, width: run.w, height: Math.min(Math.ceil(cssContentSize.height), 16000), scale: 1 },
       });
       writeFileSync(join(outDir, `${name}-full.png`), Buffer.from(full.data, 'base64'));
+      if (details) {
+        // 2x crops of each kind of control so the detail pass can judge craft, not just layout.
+        const { result: crops } = await page.send('Runtime.evaluate', { returnByValue: true, expression: `(() => {
+          const kinds = ${JSON.stringify(DETAIL_KINDS)};
+          const out = [];
+          for (const [kind, sel] of kinds) {
+            const el = [...document.querySelectorAll(sel)].find((e) => { const r = e.getBoundingClientRect(); return r.width > 4 && r.height > 4 && r.left >= 0 && r.right <= innerWidth && e.checkVisibility(); });
+            if (!el) continue;
+            const r = el.getBoundingClientRect();
+            out.push({ kind, x: Math.max(0, r.left - 16), y: Math.max(0, r.top + scrollY - 16), width: Math.min(r.width + 32, innerWidth), height: r.height + 32 });
+          }
+          return out;
+        })()` });
+        mkdirSync(join(outDir, 'details'), { recursive: true });
+        for (const c of crops.value ?? []) {
+          const shot = await page.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { x: c.x, y: c.y, width: c.width, height: c.height, scale: 2 } });
+          writeFileSync(join(outDir, 'details', `${name}-${c.kind}.png`), Buffer.from(shot.data, 'base64'));
+        }
+      }
     }
     await page.close();
     if (!has('--json')) console.error(`checked ${label}`);

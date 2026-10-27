@@ -30,12 +30,15 @@ You **edit nothing**; the parent applies your fixes.
    the deviation justified in `DESIGN.md`?
 4. **Floor.** Any FAIL in lint/inspect output; anything the scripts cannot see: text over busy images, focus
    order, layout jumps, overlapping elements, cropped text in ru, empty/error states (`app`).
-5. **Answers** (`app`): does each screen state its finding (title subline), show shortfalls/deltas, status
+5. **Craft:** open every crop in `<screenshots>/details/` and judge each against `references/components.md`:
+   a browser-default control, a language switcher or date field left plain, mismatched heights in a row, missing
+   hover/focus/dark design, or no signature moment is a `fidelity` fix. Name the crop file.
+6. **Answers** (`app`): does each screen state its finding (title subline), show shortfalls/deltas, status
    breakdowns that link, counting filters and helpful form context, all derived from the existing data
    (`references/app.md` → "Answer, don't display")? Missing answers are `idea` fixes.
-6. **Consistency** (`app`): page title row, primary action, toolbar, table, form and empty states look and behave
+7. **Consistency** (`app`): page title row, primary action, toolbar, table, form and empty states look and behave
    the same on every screen.
-7. **Copy and material.** Invented proof, placeholder numbers not marked, the name/title repeated in one screen,
+8. **Copy and material.** Invented proof, placeholder numbers not marked, the name/title repeated in one screen,
    untranslated strings.
 
 ## Output
